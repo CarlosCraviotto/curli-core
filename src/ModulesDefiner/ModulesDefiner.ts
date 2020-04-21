@@ -1,5 +1,5 @@
-import {ApplicationEventsType} from "../Events/ApplicationEventsType";
-import {ModuleBase} from "../Module/ModuleBase";
+import {ApplicationEventsType} from '../Events/ApplicationEventsType';
+import {ModuleBase} from '../Module/ModuleBase';
 
 export interface ModulesDefiner {
 

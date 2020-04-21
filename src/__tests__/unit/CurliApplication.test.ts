@@ -6,10 +6,10 @@ import {
     ConfigModulesDefiner,
     CurliApplication,
     CurliApplicationConfig,
-    ServicesModulesDefiner
+    ServicesModulesDefiner,
 } from '../../';
-import {getModuleServiceTest} from "./ModuleServiceModher";
-import {getBooterTest} from "./BootersModher";
+import {getModuleServiceTest} from './ModuleServiceModher';
+import {getBooterTest} from './BootersModher';
 
 // function sleep(milliseconds: number) {
 //     const date = Date.now();
@@ -18,8 +18,6 @@ import {getBooterTest} from "./BootersModher";
 //         currentDate = Date.now();
 //     } while (currentDate - date < milliseconds);
 // }
-
-
 
 let app: CurliApplication;
 
@@ -52,12 +50,12 @@ describe('CurliApplication tests', function () {
             APPLICATION_EVENT_CONST.AFTER_BOOTERS,
             APPLICATION_EVENT_CONST.BEFORE_START,
             APPLICATION_EVENT_CONST.AFTER_START,
-    ];
+        ];
         arrayEventToEmit.forEach((event: ApplicationEventsType)=>{
             app.on(event, ()=>{
                 arrayEventToEmit.splice(arrayEventToEmit.indexOf(event), 1);
-                //sleep(100);
-                //console.log("Event -> " + event);
+                // sleep(100);
+                // console.log("Event -> " + event);
             });
         });
 
@@ -65,7 +63,6 @@ describe('CurliApplication tests', function () {
 
         chai.assert.deepEqual(0, arrayEventToEmit.length);
     });
-
 
     it('Should register Services Modules Definer.', function () {
         const ModuleServiceTest = getModuleServiceTest();

@@ -1,7 +1,8 @@
 
-export class ModuleBase{
+export class ModuleBase {
 
-    public constructor(){}
+    public constructor () {}
 
-    [key:string]: any
+    [key: string]: any
+
 }

@@ -1,4 +1,4 @@
-import {ApplicationEventsType} from "./ApplicationEventsType";
+import {ApplicationEventsType} from './ApplicationEventsType';
 
 export const APPLICATION_EVENT_CONST: {[key: string]: ApplicationEventsType} = {
     AFTER_MODULES_DEFINERS: 'after:ModulesDefiners',
@@ -10,4 +10,4 @@ export const APPLICATION_EVENT_CONST: {[key: string]: ApplicationEventsType} = {
     AFTER_BOOTERS: 'after:booters',
     BEFORE_START: 'before:start',
     AFTER_START: 'after:start',
-}
+};

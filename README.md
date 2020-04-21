@@ -29,7 +29,7 @@ const foo = container.get("foo");
 
 
 ### Commands
-
+n
  - `npm run build`: Build the project (Curli framework).
  - `npm run build:clean`: Delete first the dist folder and build it.
  - `npm run clean`: Delete the dist folder.
