@@ -89,6 +89,7 @@ export class CurliApplication extends events.EventEmitter {
      */
     public setContainer (container: DependencyInjection) {
         this.container = container;
+        this.registerExpressIntoTheContainer();
     }
 
     /**
@@ -140,6 +141,16 @@ export class CurliApplication extends events.EventEmitter {
 
     log (message: string): void {
         console.log(message);
+    }
+
+    /**
+     * Register the express app as a service and it can be injected since now.
+     */
+    private registerExpressIntoTheContainer (): void {
+        (this.container as DependencyInjection).registerServiceBuilded(
+            'expressApp',
+            this.getExpressApp()
+        );
     }
 
 }
