@@ -1,5 +1,5 @@
 # curli-core
-The core for a library to handle modules on the top of Express and build a complete custom framework
+The core for a library to handle modules on the top of Express and build a complete custom framework.
 
 
 [![Build Status](https://travis-ci.org/CarlosCraviotto/curli-core.svg?branch=master)](https://travis-ci.com/github/CarlosCraviotto/curli-core)
@@ -7,7 +7,15 @@ The core for a library to handle modules on the top of Express and build a compl
 
 
 ### Motivation
-There are a lot of dependency injection libraries for JavaScript/Typescript out there, this is not new.  The one thing we're trying to achieve here is the ability to take advantage of such a library but without coupling it into the application's domain. The main goal here is to create a library that you can use without using third part code into your domains.
+- Create a framework that doesn't want a wedding, just a hookup
+
+- Doesn't matter if you want MVC, Spaghetti Code or CQRS, you can do it.
+
+- Easy to extend
+
+- Build it using modules and modules definers.
+
+  
 
 ### Installation
 
@@ -19,17 +27,39 @@ npm install --save curli-core
 #### Basic Usage
 
 ```typescript
-import {CurliApplication} from "curli-core";
+import {
+  CurliApplication,
+  BootersModulesDefiner,
+  ServicesModulesDefiner,
+  ConfigModulesDefiner
+} from 'curli-core';
 
+import {AppModule} from "./App/Infrastructure/AppModule";
+import {UserModule} from "./Users/Infrastructure/UserModule";
+import {ListModule} from "./Lists/Infrastructure/ListModule";
 
-//creating the service
-const foo = container.get("foo");
+  const app = new CurliApplication({
+    port: 3000,
+    environment: 'local'
+  });
+
+  app.addModulesDefiner(new BootersModulesDefiner(app));
+  app.addModulesDefiner(new ServicesModulesDefiner(app));
+  app.addModulesDefiner(new ConfigModulesDefiner(app));
+
+  app.addModule(new AppModule());
+  app.addModule(new UserModule());
+  app.addModule(new ListModule());
+
+  app.startApp();
+  app.initServer(function (url: string) {
+    console.log(`Server is running at ${url}`);
+  });
 
 ```
 
 
 ### Commands
-n
  - `npm run build`: Build the project (Curli framework).
  - `npm run build:clean`: Delete first the dist folder and build it.
  - `npm run clean`: Delete the dist folder.
