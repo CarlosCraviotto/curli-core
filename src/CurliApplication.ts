@@ -54,7 +54,10 @@ export class CurliApplication extends events.EventEmitter {
         this.modulesHandle.add(module);
     }
 
-    public startApp () {
+    /**
+     * Call the start events for the app.
+     */
+    public startApp (): void {
         this.emit(APPLICATION_EVENT_CONST.AFTER_MODULES_DEFINERS);
 
         this.emit(APPLICATION_EVENT_CONST.BEFORE_CONFIG);
@@ -70,15 +73,27 @@ export class CurliApplication extends events.EventEmitter {
         this.emit(APPLICATION_EVENT_CONST.AFTER_START);
     }
 
+    /**
+     * Emit an event in the app
+     * @param eventName
+     */
     public emit (eventName: string): boolean {
-        // console.log('Event: ' + eventName);
         return super.emit(eventName);
     }
 
+    /**
+     * Set the service container (see curli-di).
+     * We are doing it from the ServiceModulesDefiner
+     *
+     * @param container
+     */
     public setContainer (container: DependencyInjection) {
         this.container = container;
     }
 
+    /**
+     * Get the service container (see curli-di).
+     */
     public getContainer (): DependencyInjection | never {
         if (!this.container) {
             throw new Error('Not container defined.');
@@ -101,6 +116,10 @@ export class CurliApplication extends events.EventEmitter {
         return this.environmentsSupported;
     }
 
+    /**
+     * Set a middleware in the express app.
+     * @param callable
+     */
     public setMiddleware (callable: RequestHandler): Express {
         return this.expressApp.use(callable);
     }
@@ -111,7 +130,7 @@ export class CurliApplication extends events.EventEmitter {
         });
     }
 
-    setConfig (all: { [p: string]: any }) {
+    setConfig (all: { [p: string]: any }): void {
         this.configuration = all;
     }
 
@@ -119,8 +138,8 @@ export class CurliApplication extends events.EventEmitter {
         return this.configuration;
     }
 
-    log (_message: string): void {
-        // console.log(message);
+    log (message: string): void {
+        console.log(message);
     }
 
 }
