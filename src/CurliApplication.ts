@@ -10,7 +10,7 @@ import {ModulesHandler} from './Module/ModulesHandler';
 import {Module} from './Module';
 import {APPLICATION_EVENT_CONST} from './Events';
 import {CurliApplicationConfig} from './CurliApplicationConfig';
-import {DEFAULT_ENVIRONMENTS} from "./AppConst";
+import {DEFAULT_ENVIRONMENTS} from './AppConst';
 
 export class CurliApplication extends events.EventEmitter {
 
@@ -21,11 +21,24 @@ export class CurliApplication extends events.EventEmitter {
     protected modulesDefinerHandle: ModulesDefinersHandler;
     protected modulesHandle: ModulesHandler;
 
+    /**
+     * An instance of the Express app
+     */
     protected expressApp: Express;
 
+    /**
+     * The service container
+     */
     protected container: DependencyInjection | undefined;
 
+    /**
+     * Configuration loaded using the config module defined and curli-config library.
+     */
     protected configuration: any;
+
+    /**
+     * Initial configuration provider when we instantiate this app object.
+     */
     public initialConfiguration: { [key: string]: any } | undefined;
 
     public constructor (config: CurliApplicationConfig) {
@@ -38,7 +51,7 @@ export class CurliApplication extends events.EventEmitter {
         this.environment = config.environment;
 
         this.environmentsSupported =
-            (config.environmentsSupported)? config.environmentsSupported : DEFAULT_ENVIRONMENTS;
+            (config.environmentsSupported) ? config.environmentsSupported : DEFAULT_ENVIRONMENTS;
 
         this.expressApp = express();
 
@@ -46,10 +59,18 @@ export class CurliApplication extends events.EventEmitter {
         this.modulesDefinerHandle = new ModulesDefinersHandler(this, this.modulesHandle);
     }
 
+    /**
+     * Add a module definer to extend the modules behaviour.
+     * @param modulesDefiner
+     */
     public addModulesDefiner (modulesDefiner: ModulesDefiner) {
         this.modulesDefinerHandle.add(modulesDefiner);
     }
 
+    /**
+     * Add a module to load configuration/services/booters and other.
+     * @param module
+     */
     public addModule (module: Module) {
         this.modulesHandle.add(module);
     }
