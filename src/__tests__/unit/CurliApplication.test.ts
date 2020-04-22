@@ -104,7 +104,7 @@ describe('CurliApplication tests', function () {
             Booter.prototype.boot = () => {
             };
 
-            booterDefiner.addBooterClass(Booter);
+            booterDefiner.registerBooter(Booter);
             chai.assert.deepEqual(booterDefiner.getName(), booterModulesDefiner.getName());
         };
 
@@ -118,7 +118,7 @@ describe('CurliApplication tests', function () {
 
         const ModuleServiceTest = getModuleServiceTest();
         ModuleServiceTest.prototype.registerConfig = (config: any) => {
-            chai.assert.deepEqual(config.get('app-version'), '0.0.1');
+            chai.assert.deepEqual(config.get('app-version'), undefined);
         };
 
         const configModulesDefiner = new ConfigModulesDefiner(app);

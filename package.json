@@ -57,7 +57,7 @@
     "@types/express": "^4.17.4",
     "express": "^4.17.1",
     "curli-di": "^1.0.1",
-    "curli-config": "^0.0.2"
+    "curli-config": "1.0.0-beta.1"
   },
   "devDependencies": {
     "@types/mocha": "7.0.2",

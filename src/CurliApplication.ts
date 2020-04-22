@@ -10,11 +10,13 @@ import {ModulesHandler} from './Module/ModulesHandler';
 import {Module} from './Module';
 import {APPLICATION_EVENT_CONST} from './Events';
 import {CurliApplicationConfig} from './CurliApplicationConfig';
+import {DEFAULT_ENVIRONMENTS} from "./AppConst";
 
 export class CurliApplication extends events.EventEmitter {
 
     protected port: number;
     protected environment: string;
+    protected environmentsSupported: Array<string>;
 
     protected modulesDefinerHandle: ModulesDefinersHandler;
     protected modulesHandle: ModulesHandler;
@@ -28,11 +30,15 @@ export class CurliApplication extends events.EventEmitter {
 
     public constructor (config: CurliApplicationConfig) {
         super();
-        // console.log(express);
+
         // register the port we will use to listen the app
         this.port = config.port;
+
         // register the environment we will use
         this.environment = config.environment;
+
+        this.environmentsSupported =
+            (config.environmentsSupported)? config.environmentsSupported : DEFAULT_ENVIRONMENTS;
 
         this.expressApp = express();
 
@@ -86,6 +92,13 @@ export class CurliApplication extends events.EventEmitter {
 
     public getEnvironment (): string {
         return this.environment;
+    }
+
+    /**
+     * Return an array with the supported environments in the app.
+     */
+    public getEnvironmentsSupported (): Array<string> {
+        return this.environmentsSupported;
     }
 
     public setMiddleware (callable: RequestHandler): Express {

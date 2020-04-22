@@ -31,7 +31,7 @@ export class BootersModulesDefiner extends BaseModulesDefiner implements Modules
         module.registerBooters(this);
     }
 
-    public addBooterClass<T> (BooterClass: {new (app: CurliApplication): any}, options?: T) {
+    public registerBooter<T> (BooterClass: {new (app: CurliApplication): any}, options?: T) {
         const booter = new BooterClass(this.app);
         (this.bootersList as BooterList).add(booter, options);
     }
