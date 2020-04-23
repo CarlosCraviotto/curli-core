@@ -68,5 +68,24 @@ import {ListModule} from "./Lists/Infrastructure/ListModule";
  - `npm run lint`: Check the code using the rules in .eslintre.js
  - `npm run lint:fix`: Check the code and try to fix it.
 
+
+
+### Changelog
+
+All notable changes to this project will be documented in this section.
+
+### 0.0.1 - 2020-0X-XX
+
+#### Added
+
+- Express app was inserted into the service container as @expressApp
+
+#### Changed
+
+- 
+
+
+
 ### License
+
 MIT
