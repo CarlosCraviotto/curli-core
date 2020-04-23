@@ -3,7 +3,7 @@ import {ModuleBase} from '../../Module/ModuleBase';
 import {DependencyInjection, ExternalDependencies} from 'curli-di';
 import {DependencyInjection as DependencyInjectionInterface} from 'curli-types';
 import {BaseModulesDefiner} from '../BaseModulesDefiner';
-import {ModulesDefiner} from '../ModulesDefiner';
+import {ModulesDefiner} from 'curli-types';
 
 export class ServicesModulesDefiner extends BaseModulesDefiner implements ModulesDefiner {
 

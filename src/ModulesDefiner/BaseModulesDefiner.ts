@@ -1,5 +1,4 @@
-
-import {CurliApplication} from '../CurliApplication';
+import {CurliApplication} from 'curli-types';
 
 export class BaseModulesDefiner {
 

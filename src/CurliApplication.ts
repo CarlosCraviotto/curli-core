@@ -5,9 +5,9 @@ import events = require('events');
 import {DependencyInjection} from 'curli-types';
 
 import {ModulesDefinersHandler} from './ModulesDefiner/ModulesDefinersHandler';
-import {ModulesDefiner} from './ModulesDefiner/ModulesDefiner';
+import {ModulesDefiner} from 'curli-types';
 import {ModulesHandler} from './Module/ModulesHandler';
-import {Module} from './Module';
+import {Module} from 'curli-types';
 import {APPLICATION_EVENT_CONST} from './Events';
 import {CurliApplicationConfig} from './CurliApplicationConfig';
 import {DEFAULT_ENVIRONMENTS} from './AppConst';

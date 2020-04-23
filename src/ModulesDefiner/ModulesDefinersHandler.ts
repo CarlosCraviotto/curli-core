@@ -1,7 +1,5 @@
-import {ModulesDefiner} from './ModulesDefiner';
-import {CurliApplication} from '../CurliApplication';
+import {ModulesDefiner, CurliApplication, Module} from 'curli-types';
 import {ModulesHandler} from '../Module/ModulesHandler';
-import {Module} from '../Module/Module';
 import {BASE_EVENTS_NAMES} from '../Events/BaseEventsNamesConst';
 
 export class ModulesDefinersHandler {

@@ -1,4 +1,4 @@
-import {Booter} from '../../Booters';
+import {Booter} from 'curli-types';
 
 class BooterTest implements Booter {
 

@@ -1,6 +1,5 @@
 import {BooterItem} from './BooterItem';
-// import {CurliApplication} from "../../CurliApplication";
-import {Booter} from '../Booter';
+import {Booter} from 'curli-types';
 
 export class BooterList {
 

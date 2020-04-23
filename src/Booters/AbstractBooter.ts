@@ -1,5 +1,4 @@
-import {CurliApplication} from '../CurliApplication';
-import {Booter} from './Booter';
+import {Booter, CurliApplication} from 'curli-types';
 
 export abstract class AbstractBooter implements Booter {
 

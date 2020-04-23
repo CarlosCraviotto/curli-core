@@ -2,7 +2,7 @@ import {ApplicationEventsType} from '../../Events/ApplicationEventsType';
 import {ModuleBase} from '../../Module/ModuleBase';
 import {BaseModulesDefiner} from '../BaseModulesDefiner';
 import {Config} from 'curli-config';
-import {ModulesDefiner} from '../ModulesDefiner';
+import {ModulesDefiner} from 'curli-types';
 
 export class ConfigModulesDefiner extends BaseModulesDefiner implements ModulesDefiner {
 
@@ -42,18 +42,5 @@ export class ConfigModulesDefiner extends BaseModulesDefiner implements ModulesD
             filesPaths: [],
         });
     }
-
-    // private getExternalDependencies(): ExternalDependencies {
-    //     const externalDependencies: ExternalDependencies = new ExternalDependencies();
-    //
-    //     externalDependencies.add("app", this.app);
-    //
-    //     if (this.app.initialConfiguration) {
-    //         externalDependencies.bulk(this.app.initialConfiguration);
-    //     }
-    //
-    //     externalDependencies.bulk(this.app.getConfig());
-    //     return externalDependencies;
-    // }
 
 }

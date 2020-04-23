@@ -2,9 +2,8 @@ import {ApplicationEventsType} from '../../Events/ApplicationEventsType';
 import {ModuleBase} from '../../Module/ModuleBase';
 import {BaseModulesDefiner} from '../BaseModulesDefiner';
 import {BooterList} from '../../Booters/BooterList/BooterList';
-// import {Booter} from "../../Booters/Booter";
-import {ModulesDefiner} from '../ModulesDefiner';
-import {CurliApplication} from '../../CurliApplication';
+import {ModulesDefiner} from 'curli-types';
+import {BooterClass} from 'curli-types';
 import {EVENTS_NAMES} from '../../Events';
 
 export class BootersModulesDefiner extends BaseModulesDefiner implements ModulesDefiner {
@@ -31,8 +30,8 @@ export class BootersModulesDefiner extends BaseModulesDefiner implements Modules
         module.registerBooters(this);
     }
 
-    public registerBooter<T> (BooterClass: {new (app: CurliApplication): any}, options?: T) {
-        const booter = new BooterClass(this.app);
+    public registerBooter<T> (booterClass: BooterClass, options?: T) {
+        const booter = new booterClass(this.app);
         (this.bootersList as BooterList).add(booter, options);
     }
 

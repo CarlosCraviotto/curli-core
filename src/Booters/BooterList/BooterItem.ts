@@ -1,5 +1,5 @@
 
-import {Booter} from '../Booter';
+import {Booter} from 'curli-types';
 
 export class BooterItem {
 
