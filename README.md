@@ -59,7 +59,25 @@ import {ListModule} from "./Lists/Infrastructure/ListModule";
 ```
 
 
+
+### Start app event sequence
+
+1. AFTER_MODULES_DEFINERS
+2. BEFORE_CONFIG
+3. AFTER_CONFIG
+4. BEFORE_SERVICES
+5. AFTER_SERVICES
+6. BEFORE_BOOTERS
+7. AFTER_BOOTERS
+8. BEFORE_START
+9. AFTER_START
+
+
+
+
+
 ### Commands
+
  - `npm run build`: Build the project (Curli framework).
  - `npm run build:clean`: Delete first the dist folder and build it.
  - `npm run clean`: Delete the dist folder.
