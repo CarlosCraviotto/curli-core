@@ -2,7 +2,7 @@ import * as express from 'express';
 import {Express, RequestHandler} from 'express';
 import events = require('events');
 
-import {DependencyInjection} from 'curli-di';
+import {DependencyInjection} from 'curli-types';
 
 import {ModulesDefinersHandler} from './ModulesDefiner/ModulesDefinersHandler';
 import {ModulesDefiner} from './ModulesDefiner/ModulesDefiner';

@@ -1,12 +1,13 @@
 import {ApplicationEventsType} from '../../Events/ApplicationEventsType';
 import {ModuleBase} from '../../Module/ModuleBase';
 import {DependencyInjection, ExternalDependencies} from 'curli-di';
+import {DependencyInjection as DependencyInjectionInterface} from 'curli-types';
 import {BaseModulesDefiner} from '../BaseModulesDefiner';
 import {ModulesDefiner} from '../ModulesDefiner';
 
 export class ServicesModulesDefiner extends BaseModulesDefiner implements ModulesDefiner {
 
-    private container: DependencyInjection | undefined = undefined;
+    private container: DependencyInjectionInterface | undefined = undefined;
 
     public getName (): string {
         return 'ServicesModulesDefiner';
@@ -14,7 +15,7 @@ export class ServicesModulesDefiner extends BaseModulesDefiner implements Module
 
     public ini (): void {
         this.createContainerService();
-        this.app.setContainer((this.container as DependencyInjection));
+        this.app.setContainer((this.container as DependencyInjectionInterface));
     }
 
     public whenCallMethodInModules (): ApplicationEventsType {
