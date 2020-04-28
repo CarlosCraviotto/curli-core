@@ -14,7 +14,7 @@ export class BootersModulesDefiner extends BaseModulesDefiner implements Modules
         return 'BooterModulesDefiner';
     }
 
-    public ini (): void {
+    public init (): void {
         this.bootersList = new BooterList();
     }
 

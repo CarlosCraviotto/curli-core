@@ -31,7 +31,10 @@ export class ModulesDefinersHandler {
 
     private registerEventFroModulesDefiner (definer: ModulesDefiner) {
         this.app.on(definer.whenCallMethodInModules(), ()=>{
-            definer.ini();
+
+            definer.init();
+
+            //get the modules with the method required by the definer
             const modulesList: Array<Module> = this.modules.getModulesWithMethod(definer.getMethodName());
             modulesList.forEach((module: Module)=>{
                 definer.callMethodInModules(module);

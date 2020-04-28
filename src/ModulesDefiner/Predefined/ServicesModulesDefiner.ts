@@ -13,7 +13,7 @@ export class ServicesModulesDefiner extends BaseModulesDefiner implements Module
         return 'ServicesModulesDefiner';
     }
 
-    public ini (): void {
+    public init (): void {
         this.createContainerService();
         this.app.setContainer((this.container as DependencyInjectionInterface));
     }

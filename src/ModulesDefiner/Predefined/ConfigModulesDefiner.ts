@@ -12,7 +12,7 @@ export class ConfigModulesDefiner extends BaseModulesDefiner implements ModulesD
         return 'ConfigModulesDefiner';
     }
 
-    public ini (): void {
+    public init (): void {
         this.createConfig();
     }
 
