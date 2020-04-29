@@ -13,7 +13,7 @@ export class ServicesModulesDefiner extends BaseModulesDefiner implements Module
         return 'ServicesModulesDefiner';
     }
 
-    public init (): void {
+    public beforeCallModules (): void {
         this.createContainerService();
         this.app.setContainer((this.container as DependencyInjectionInterface));
     }
@@ -48,7 +48,7 @@ export class ServicesModulesDefiner extends BaseModulesDefiner implements Module
         return externalDependencies;
     }
 
-    public afterCalledModules (): void {
+    public afterCallModules (): void {
     }
 
 }

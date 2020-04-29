@@ -14,7 +14,7 @@ export class BootersModulesDefiner extends BaseModulesDefiner implements Modules
         return 'BooterModulesDefiner';
     }
 
-    public init (): void {
+    public beforeCallModules (): void {
         this.bootersList = new BooterList();
     }
 
@@ -39,7 +39,7 @@ export class BootersModulesDefiner extends BaseModulesDefiner implements Modules
         (this.bootersList as BooterList).boot();
     }
 
-    public afterCalledModules (): void {
+    public afterCallModules (): void {
         this.app.emit(EVENTS_NAMES.BOOTING_BOOTERS);
         this.boot();
     }

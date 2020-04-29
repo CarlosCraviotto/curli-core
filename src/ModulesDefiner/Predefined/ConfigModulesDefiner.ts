@@ -12,7 +12,7 @@ export class ConfigModulesDefiner extends BaseModulesDefiner implements ModulesD
         return 'ConfigModulesDefiner';
     }
 
-    public init (): void {
+    public beforeCallModules (): void {
         this.createConfig();
     }
 
@@ -28,7 +28,7 @@ export class ConfigModulesDefiner extends BaseModulesDefiner implements ModulesD
         module.registerConfig(this.config);
     }
 
-    public afterCalledModules (): void {
+    public afterCallModules (): void {
         this.app.setConfig((this.config as Config).getAll());
     }
 
