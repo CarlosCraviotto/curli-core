@@ -5,11 +5,13 @@ import {
     BootersModulesDefiner,
     ConfigModulesDefiner,
     CurliApplication,
-    CurliApplicationConfig,
+    CurliApplicationConfig, EventBusModulesDefiner,
     ServicesModulesDefiner,
 } from '../../';
 import {getModuleServiceTest} from './ModuleServiceModher';
 import {getBooterTest} from './BootersModher';
+import { EventBus } from 'curli-bus';
+import { DependencyInjection } from 'curli-di';
 
 // function sleep(milliseconds: number) {
 //     const date = Date.now();
@@ -126,6 +128,31 @@ describe('CurliApplication tests', function () {
         app.addModule(new ModuleServiceTest());
 
         app.emit(configModulesDefiner.whenCallMethodInModules());
+    });
+
+
+    it('Should register Event bus Modules Definer And call modules with registerEvens.', function () {
+
+        const ModuleServiceTest = getModuleServiceTest();
+        ModuleServiceTest.prototype.registerEvens = (busService: EventBus) => {
+            chai.assert.isTrue(busService instanceof  EventBus);
+        };
+
+        app.setContainer(new DependencyInjection())
+
+        const eventBusModulesDefiner = new EventBusModulesDefiner(app);
+        app.addModulesDefiner(eventBusModulesDefiner);
+        app.addModule(new ModuleServiceTest());
+
+        app.emit(eventBusModulesDefiner.whenCallMethodInModules());
+    });
+
+    it('Should get right values of Event bus Modules Definer.', function () {
+
+        const eventBusModulesDefiner = new EventBusModulesDefiner(app);
+        chai.assert.deepEqual('registerEvens', eventBusModulesDefiner.getMethodName());
+        chai.assert.deepEqual('EventBusModulesDefiner', eventBusModulesDefiner.getName());
+        chai.assert.deepEqual('after:services', eventBusModulesDefiner.whenCallMethodInModules());
     });
 
     it('Should throw an error when register two modules with same name.', function () {
