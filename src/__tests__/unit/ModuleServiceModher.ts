@@ -9,7 +9,7 @@ class ModuleServiceTest implements Module {
     }
     public registerConfig (_container: any) {
     }
-    public registerEvens (_busService: any) {
+    public registerEventsSubscribers (_busService: any) {
     }
 
     public getName (): string {

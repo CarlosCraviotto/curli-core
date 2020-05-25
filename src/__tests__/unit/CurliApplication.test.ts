@@ -134,7 +134,7 @@ describe('CurliApplication tests', function () {
     it('Should register Event bus Modules Definer And call modules with registerEvens.', function () {
 
         const ModuleServiceTest = getModuleServiceTest();
-        ModuleServiceTest.prototype.registerEvens = (busService: EventBus) => {
+        ModuleServiceTest.prototype.registerEventsSubscribers = (busService: EventBus) => {
             chai.assert.isTrue(busService instanceof  EventBus);
         };
 
@@ -150,7 +150,7 @@ describe('CurliApplication tests', function () {
     it('Should get right values of Event bus Modules Definer.', function () {
 
         const eventBusModulesDefiner = new EventBusModulesDefiner(app);
-        chai.assert.deepEqual('registerEvens', eventBusModulesDefiner.getMethodName());
+        chai.assert.deepEqual('registerEventsSubscribers', eventBusModulesDefiner.getMethodName());
         chai.assert.deepEqual('EventBusModulesDefiner', eventBusModulesDefiner.getName());
         chai.assert.deepEqual('after:services', eventBusModulesDefiner.whenCallMethodInModules());
     });

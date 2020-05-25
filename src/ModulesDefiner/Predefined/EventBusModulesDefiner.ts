@@ -10,7 +10,7 @@ export const EVENT_BUS_SERVICE_NAME = 'eventBus';
 
 export class EventBusModulesDefiner extends BaseModulesDefiner implements ModulesDefiner {
     private container: DependencyInjection | undefined = undefined;
-    protected evensBus: EventBus | undefined = undefined;
+    protected eventsBus: EventBus | undefined = undefined;
 
     public getName (): string {
         return 'EventBusModulesDefiner';
@@ -20,7 +20,7 @@ export class EventBusModulesDefiner extends BaseModulesDefiner implements Module
         this.container = this.app.getContainer();
         this.registerService(this.container);
 
-        this.evensBus = this.container.get(EVENT_BUS_SERVICE_NAME);
+        this.eventsBus = this.container.get(EVENT_BUS_SERVICE_NAME);
     }
 
     public whenCallMethodInModules (): ApplicationEventsType {
@@ -28,11 +28,11 @@ export class EventBusModulesDefiner extends BaseModulesDefiner implements Module
     }
 
     public getMethodName (): string {
-        return 'registerEvens';
+        return 'registerEventsSubscribers';
     }
 
     public callMethodInModules (module: ModuleBase): void {
-        module.registerEvens(this.evensBus);
+        module.registerEventsSubscribers(this.eventsBus);
     }
 
     public afterCallModules (): void {
